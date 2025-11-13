@@ -1,0 +1,70 @@
+Name  :- OM DAHAKE
+Roll_N:- 24112039
+- Problem Statement : Given a file sorted element written inside it after first 8 byte in 
+		      first 8 bytes contains details of the block size and element size and number of element
+		      byte level access can not be done in m2 only a block size memory can be fetch 
+		      Write a code to perform searching on given data such minimum access of M2 should be taken
+		      use of m1 memory which will be very less in size compared to M2 is allowed only
+		      first fetch block in M1 to gain byte level acces to data
+- User Interface :
+        -- input shall be in the file
+        -- each element is of size 4 byte can't be changed since int is used to read data element 
+        -- Block Size : always in 2 to the power k  
+        -- Memory indexing scheme :
+                --- Bytes : Numbered from left to right 
+                            Starting from 0 and ending on (n - 1)
+                        +---------------------------------------------+
+                        | | | | | | | | | | | | | | | | | | | | | | | |
+                        +---------------------------------------------+
+                         0 1 2 ...                                   n-1 = 2048
+
+                --- Bits : Numbered from rigth to left starting from 0 and ending on 7
+                        +---------------+
+                        | | | | | | | | |
+                        +---------------+
+                         7 6 5 4 3 2 1 0
+
+        -- In the program Input is given inside the file
+        -- User can  write anything in last bytes i.e. from where given data ends -----Assume enought space is there
+        -- Program should search given numbers and tell if it exists or not
+
+
+Files:-
+
+Write_data.c :- This file writes the given number of elements in file name new
+parameters to be set
+
+#define num_of_elements (513 ) //tell number of elements
+#define element_size 4  //its fixed
+#define block 32 //block sized only care should be that m1 could hold atleast two blocks
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+set_block.c :- Need to set Block size and elment size and tell element count for searching and abstraction to be created
+
+B_size=32; //store block size of m2
+E_size=4; //store elements size in each block
+E_cnt=513;  //store total given elements count
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+search_file.c :- Createst the abtraction of given blocks at the end file named "new" and perform seaching on that for number of elements times
+		 for random numbers and print number and its status in form of 0 and 1
+		 0 for non-present number
+		 1 for present number
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+print.c :- print the written numbers of m2
+binsearch :- It contains logic for serching element it is include in file search_file.c
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Run :- just runs the above file in sequence and store result in file name "result"
+gcc write.c
+./a.out
+gcc search_file.c
+./a.out > result
+
+
+
+//////////////////// For now changing the block size will throw an error because of mistake while moving files i moved old version of files in corrected one 
+

@@ -1,0 +1,4 @@
+gcc write.c
+./a.out
+gcc search_file.c
+./a.out > result
