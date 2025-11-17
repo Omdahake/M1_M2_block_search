@@ -66,5 +66,5 @@ gcc search_file.c
 
 
 
-//////////////////// For now changing the block size will throw an error because of mistake while moving files i moved old version of files in corrected one 
+/////////////////// 
 
